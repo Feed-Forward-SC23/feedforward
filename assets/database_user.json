@@ -1,0 +1,32 @@
+{
+    "appuser":{
+        "username":"purveshxd",
+        "profile":"link to time image",
+        "email":"do.psd23@gmail.com",
+        "contact":9146477923,
+        "address":"This is a address and so it is supposed to point a location!",
+        "geolocation":{
+            "lat": 123456,
+            "lon":78910
+        },
+        "isOrganization":true,
+        "licenses":[
+            "different licenses"
+        ],
+        "pastOrders":[{
+            "orderDateTime":"DateTime",
+            "product":"reference to product"
+        },
+        {
+            "orderDateTime":"DateTime",
+            "product":"reference to product"
+        }],
+        "listerProducts":[{
+            "listingDateTime":"DateTime",
+            "product":"reference to product"
+        },{
+            "listingDateTime":"DateTime",
+            "product":"reference to product"
+        }]
+    }
+}
