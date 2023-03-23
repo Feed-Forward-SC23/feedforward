@@ -2,8 +2,12 @@
 
 Submission for Solution Challenge
 
-###Team:
+### Team:
+
 Sai Charan Kotichintala (C)
+
 Sakshi Ghugal
+
 Purvesh Dongarwar
+
 Laksh Samdariya
