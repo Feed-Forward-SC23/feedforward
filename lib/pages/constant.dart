@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-class StringConstants {}
+class ColorConstants {}
 
 SizedBox buildHeight(double height) => SizedBox(height: height);

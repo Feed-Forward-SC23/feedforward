@@ -6,9 +6,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../pages/main_page.dart';
 
 class GoogleSignInProvider extends ChangeNotifier {
-  final googleSignIn = GoogleSignIn();
-  final BuildContext context;
   GoogleSignInProvider({required this.context});
+
+  final BuildContext context;
+  final googleSignIn = GoogleSignIn();
 
   GoogleSignInAccount? _user;
 
@@ -26,11 +27,16 @@ class GoogleSignInProvider extends ChangeNotifier {
       idToken: googleAuth.idToken,
     );
 
-    await FirebaseAuth.instance.signInWithCredential(credential);
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => const MainPage()),
-        (route) => false);
+    try {
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const MainPage()),
+          (route) => false);
+    } on FirebaseAuthException catch (e) {
+      final snackBarE = SnackBar(content: Text(e.message.toString()));
+      ScaffoldMessenger.of(context).showSnackBar(snackBarE);
+    }
 
     notifyListeners();
   }
