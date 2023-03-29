@@ -19,6 +19,12 @@ class ProductApi {
       throw Exception("${response.reasonPhrase}xdxd");
     }
   }
+
+  Future<Product> writeProduct(Product) async {
+    
+
+    throw "Hello";
+  }
 }
 
 final apiProvider = Provider((ref) => ProductApi());

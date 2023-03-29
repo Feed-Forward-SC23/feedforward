@@ -1,4 +1,5 @@
 import 'package:feedforward/services/auth/google_sign_in.dart';
+import 'package:feedforward/services/localStorage/local_storage_service.dart';
 import 'package:feedforward/services/productService/productApi.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -34,16 +35,32 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         actions: [
           TextButton(
-              onPressed: () async {
-                try {
-                  // await auth.signOut();
-                  await auth.signOut();
-                  await GoogleSignInProvider(context: context).googleLogout();
-                } on FirebaseException catch (e) {
-                  final snackBarE =
-                      SnackBar(content: Text(e.message.toString()));
-                  ScaffoldMessenger.of(context).showSnackBar(snackBarE);
-                }
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text("LogOut?"),
+                      actions: [
+                        TextButton(
+                            onPressed: () async {
+                              try {
+                                // await auth.signOut();
+                                await auth.signOut();
+                                await GoogleSignInProvider(context: context)
+                                    .googleLogout();
+                              } on FirebaseException catch (e) {
+                                final snackBarE = SnackBar(
+                                    content: Text(e.message.toString()));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBarE);
+                              }
+                            },
+                            child: const Text("Yes"))
+                      ],
+                    );
+                  },
+                );
               },
               child: const Text("Logout"))
         ],
@@ -56,7 +73,19 @@ class _MainPageState extends State<MainPage> {
         },
         child: const Icon(Icons.add_rounded),
       ),
-      body: const ProductList()
+      body: ListView(children: [
+        ListTile(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+          leading: const Icon(Icons.home_rounded),
+          title: const Text("Address"),
+          subtitle: const Text("5 Star Boys Hostel, GHRCE"),
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.longestSide,
+          child: const ProductList(),
+        ),
+      ])
+
       //  Center(
       //     child: Column(
       //   children: [
@@ -111,7 +140,7 @@ class ProductList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final _data = ref.watch(productListProvider);
+    final _data = ref.watch(localProductList);
     return _data.when(
       data: (data) => ListView.builder(
           physics: const BouncingScrollPhysics(),
