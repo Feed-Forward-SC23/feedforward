@@ -9,6 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
+import 'pages/bottomNav.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -50,16 +52,16 @@ class MyApp extends StatelessWidget {
       title: 'Feed Forward',
       theme: ThemeData(
         useMaterial3: true,
-        brightness: Brightness.dark,
+        // brightness: Brightness.dark,
       ),
-      // initialRoute: '/mainpage',
-      // routes: {
-      //   '/': (context) => const HomePage(),
-      //   '/email': (context) => const EmailSignIn(),
-      //   '/mainpage': (context) => const MainPage(),
-      //   // '/mainPage': (context) => const MainPage(),
-      // },
-      home: const MainPage(),
+      routes: {
+        '/': (context) => const HomePage(),
+        '/bottomNavBar': (context) => const BottomNavBar(),
+        '/email': (context) => const EmailSignIn(),
+        '/mainpage': (context) => const MainPage(),
+        // '/mainPage': (context) => const MainPage(),
+      },
+      // home: const BottomNavBar(),
     );
   }
 }

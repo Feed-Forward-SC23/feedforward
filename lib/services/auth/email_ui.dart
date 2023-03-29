@@ -1,7 +1,6 @@
-import 'package:feedforward/pages/constant.dart';
+import 'package:feedforward/Constants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 
 import 'email_sign_in.dart';
 
