@@ -1,15 +1,13 @@
-import 'package:feedforward/services/login_ui.dart';
+import 'package:feedforward/pages/main_page.dart';
+import 'package:feedforward/services/auth/login_ui.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../pages/main_page.dart';
-
 class GoogleSignInProvider extends ChangeNotifier {
-  GoogleSignInProvider({required this.context});
-
-  final BuildContext context;
   final googleSignIn = GoogleSignIn();
+  final BuildContext context;
+  GoogleSignInProvider({required this.context});
 
   GoogleSignInAccount? _user;
 
@@ -27,16 +25,11 @@ class GoogleSignInProvider extends ChangeNotifier {
       idToken: googleAuth.idToken,
     );
 
-    try {
-      await FirebaseAuth.instance.signInWithCredential(credential);
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => const MainPage()),
-          (route) => false);
-    } on FirebaseAuthException catch (e) {
-      final snackBarE = SnackBar(content: Text(e.message.toString()));
-      ScaffoldMessenger.of(context).showSnackBar(snackBarE);
-    }
+    await FirebaseAuth.instance.signInWithCredential(credential);
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const MainPage()),
+        (route) => false);
 
     notifyListeners();
   }

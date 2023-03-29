@@ -1,19 +1,20 @@
-import 'package:feedforward/services/google_sign_in.dart';
+import 'package:feedforward/pages/main_page.dart';
+import 'package:feedforward/services/auth/email_ui.dart';
+import 'package:feedforward/services/auth/firebase_options.dart';
+import 'package:feedforward/services/auth/login_ui.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
-
-import 'services/email_ui.dart';
-import 'services/firebase_options.dart';
-import 'services/login_ui.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 // class MyApp extends StatelessWidget {
@@ -51,11 +52,14 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
-      routes: {
-        '/': (context) => const HomePage(),
-        '/email': (context) => const EmailSignIn(),
-        // '/mainPage': (context) => const MainPage(),
-      },
+      // initialRoute: '/mainpage',
+      // routes: {
+      //   '/': (context) => const HomePage(),
+      //   '/email': (context) => const EmailSignIn(),
+      //   '/mainpage': (context) => const MainPage(),
+      //   // '/mainPage': (context) => const MainPage(),
+      // },
+      home: const MainPage(),
     );
   }
 }
