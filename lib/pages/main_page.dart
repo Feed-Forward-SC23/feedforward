@@ -36,7 +36,6 @@ class _MainPageState extends State<MainPage> {
           TextButton(
               onPressed: () async {
                 try {
-                  // await auth.signOut();
                   await auth.signOut();
                   await GoogleSignInProvider(context: context).googleLogout();
                 } on FirebaseException catch (e) {
