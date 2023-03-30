@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Constants/colors.dart';
+import '../Constants/constant.dart';
 
 class SearchBar extends StatelessWidget {
   const SearchBar({
@@ -12,11 +13,14 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        hintText: 'Find your cravings',
+        hintStyle: buildBody(),
         label: Row(
           children: [
             SizedBox(
-              height: 30,
-              width: 30,
+              height: 20,
+              width: 20,
               child: ImageIcon(
                 const AssetImage('assets/logos/search 1.png'),
                 color: black[1],

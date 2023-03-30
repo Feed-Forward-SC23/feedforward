@@ -17,5 +17,6 @@ const List<Color> black = [
 
 const List<Color> white = [
   Color(0xffF6F5F5),
+  Color(0xffECECEC),
   Color(0xffffffff),
 ];
