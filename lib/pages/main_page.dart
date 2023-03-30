@@ -1,19 +1,12 @@
-import 'package:feedforward/Constants/constant.dart';
-import 'package:feedforward/customWidgets.dart/categoriesUI.dart';
-import 'package:feedforward/services/auth/google_sign_in.dart';
-import 'package:feedforward/services/productService/productApi.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../Constants/colors.dart';
-import '../customWidgets.dart/productList.dart';
-import '../customWidgets.dart/searchBar.dart';
-import 'profile.dart';
+import '../Constants/constant.dart';
+import '../customWidgets.dart/categoriesUI.dart';
+import '../customWidgets.dart/newProductList.dart';
+import '../customWidgets.dart/spotlight.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({
@@ -34,41 +27,47 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    final gridHeight = ((width - 60) * 2 / 3) + 10;
 
-    return Scaffold(
-        // ------------ Floating action button ------------------
-
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {
-        //     debugPrint("The Floating Button was Pressed");
-        //   },
-        //   child: const Icon(Icons.add_rounded),
-        // ),
-
-        body: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: ListView(
-        children: [
-          buildHeight(10.0),
-          const SearchBar(),
-          buildHeight(15.0),
-          buildToggle(),
-          buildHeight(30.0),
-          Text("Categories", style: buildHeading()),
-          buildHeight(10),
-          CategoriesGrid(
-            height: height,
-            width: width,
-          ),
-          buildHeight(30.0),
-          Text("Spotlight", style: buildHeading()),
-          const Expanded(child: ProductList()),
-          buildHeight(10.0),
-        ],
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: ListView(
+          children: [
+            // buildToggle(),
+            // buildHeight(30.0),
+            Text("Categories", style: buildHeading()),
+            buildHeight(10),
+            CategoriesGrid(
+              height: height,
+              width: width,
+            ),
+            buildHeight(30.0),
+            Row(
+              children: [
+                Text("Spotlight", style: buildHeading()),
+                const Spacer(),
+                InkWell(
+                  onTap: () => Navigator.pushNamed(context, '/allPro'),
+                  child: Text(
+                    "Show more >",
+                    style: GoogleFonts.poppins(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w500,
+                      color: cyan[0],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Expanded(
+                child: NewProductList(
+              count: spotlightList.length - 8,
+            )),
+            buildHeight(10.0),
+          ],
+        ),
       ),
-    ));
+    );
   }
 
   Row buildToggle() {
@@ -116,3 +115,14 @@ class _MainPageState extends State<MainPage> {
     );
   }
 }
+
+
+// ------------ Floating action button ------------------
+
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     debugPrint("The Floating Button was Pressed");
+        //   },
+        //   child: const Icon(Icons.add_rounded),
+        // ),
