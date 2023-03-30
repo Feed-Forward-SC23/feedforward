@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> {
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: ListView(
           children: [
-            // buildToggle(),
+            buildToggle(),
             // buildHeight(30.0),
             Text("Categories", style: buildHeading()),
             buildHeight(10),

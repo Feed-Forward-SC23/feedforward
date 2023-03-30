@@ -1,5 +1,5 @@
 import 'package:feedforward/pages/appbar1.dart';
-import 'package:feedforward/pages/free.dart';
+import 'package:feedforward/pages/free_paid.dart';
 import 'package:feedforward/pages/main_page.dart';
 import 'package:feedforward/pages/profile.dart';
 import 'package:flutter/material.dart';
@@ -24,9 +24,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     const Center(
       child: Text("Form to list down your product"),
     ),
-    const Center(
-      child: Text("List of Paid items"),
-    ),
+    const PaidPage(),
     const Profile(),
   ];
   @override
