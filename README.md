@@ -28,3 +28,5 @@ You can checkout our video submission demo on youtube by clicking on the thumbna
 
 * To show realtime location and events near the user's location we are using Google Maps API from GCP.
 
+### Setup:
+
