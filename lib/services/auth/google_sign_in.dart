@@ -1,3 +1,4 @@
+import 'package:feedforward/pages/bottomNav.dart';
 import 'package:feedforward/pages/main_page.dart';
 import 'package:feedforward/services/auth/login_ui.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,7 +29,7 @@ class GoogleSignInProvider extends ChangeNotifier {
     await FirebaseAuth.instance.signInWithCredential(credential);
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const MainPage()),
+        MaterialPageRoute(builder: (context) => const BottomNavBar()),
         (route) => false);
 
     notifyListeners();

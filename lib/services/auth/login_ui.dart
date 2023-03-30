@@ -1,8 +1,7 @@
-import 'package:feedforward/pages/constant.dart';
+import 'package:feedforward/Constants/colors.dart';
+import 'package:feedforward/Constants/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-
 
 import 'google_sign_in.dart';
 
@@ -35,7 +34,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
-                backgroundColor: Colors.white,
+                backgroundColor: yellow[0],
                 foregroundColor: Colors.black,
                 minimumSize: const Size(double.infinity, 70),
               ),
@@ -51,7 +50,7 @@ class HomePage extends StatelessWidget {
             buildHeight(10.0),
             ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
+                side: BorderSide(color: yellow[0]),
                 foregroundColor: Colors.black,
                 minimumSize: const Size(double.infinity, 70),
               ),

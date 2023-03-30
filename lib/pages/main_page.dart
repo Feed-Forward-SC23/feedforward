@@ -1,12 +1,19 @@
+import 'package:feedforward/Constants/constant.dart';
+import 'package:feedforward/customWidgets.dart/categoriesUI.dart';
 import 'package:feedforward/services/auth/google_sign_in.dart';
-import 'package:feedforward/services/localStorage/local_storage_service.dart';
 import 'package:feedforward/services/productService/productApi.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:provider/provider.dart';
+
+import '../Constants/colors.dart';
+import '../customWidgets.dart/productList.dart';
+import '../customWidgets.dart/searchBar.dart';
+import 'profile.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({
@@ -20,151 +27,92 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  late String email;
-  final FirebaseAuth auth = FirebaseAuth.instance;
-
-  @override
-  void initState() {
-    // email = widget.email;
-    super.initState();
-  }
+  bool _vegValue = true;
+  bool _nonvegValue = true;
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    final gridHeight = ((width - 60) * 2 / 3) + 10;
+
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          TextButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: const Text("LogOut?"),
-                      actions: [
-                        TextButton(
-                            onPressed: () async {
-                              try {
-                                // await auth.signOut();
-                                await auth.signOut();
-                                await GoogleSignInProvider(context: context)
-                                    .googleLogout();
-                              } on FirebaseException catch (e) {
-                                final snackBarE = SnackBar(
-                                    content: Text(e.message.toString()));
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBarE);
-                              }
-                            },
-                            child: const Text("Yes"))
-                      ],
-                    );
-                  },
-                );
-              },
-              child: const Text("Logout"))
-        ],
-        title: const Text("Welcome!!"),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          debugPrint("The Floating Button was Pressed");
-        },
-        child: const Icon(Icons.add_rounded),
-      ),
-      body: ListView(children: [
-        ListTile(
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          leading: const Icon(Icons.home_rounded),
-          title: const Text("Address"),
-          subtitle: const Text("5 Star Boys Hostel, GHRCE"),
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.longestSide,
-          child: const ProductList(),
-        ),
-      ])
+        // ------------ Floating action button ------------------
 
-      //  Center(
-      //     child: Column(
-      //   children: [
-      //     Container(
-      //       margin: const EdgeInsets.all(10),
-      //       child: Row(
-      //         mainAxisAlignment: MainAxisAlignment.start,
-      //         children: [
-      //           const Padding(
-      //             padding: EdgeInsets.all(8.0),
-      //             child: Icon(Icons.home_outlined),
-      //           ),
-      //           Column(
-      //             // mainAxisAlignment: MainAxisAlignment.start,
-      //             crossAxisAlignment: CrossAxisAlignment.start,
-      //             children: const [
-      //               Text(
-      //                 "Address",
-      //                 style: TextStyle(fontWeight: FontWeight.bold),
-      //               ),
-      //               Text("5 Star Boys Hostel, GHRCE")
-      //             ],
-      //           ),
-      //           const Spacer(),
-      //           IconButton(
-      //             onPressed: () {},
-      //             icon: const CircleAvatar(
-      //               child: Icon(Icons.person_rounded),
-      //             ),
-      //           )
-      //         ],
-      //       ),
-      //     ),
-      //   ],
-      // )),
-      ,
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: (value) {},
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded), label: "Home"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person_rounded), label: "Profile"),
+        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     debugPrint("The Floating Button was Pressed");
+        //   },
+        //   child: const Icon(Icons.add_rounded),
+        // ),
+
+        body: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: ListView(
+        children: [
+          buildHeight(10.0),
+          const SearchBar(),
+          buildHeight(15.0),
+          buildToggle(),
+          buildHeight(30.0),
+          Text("Categories", style: buildHeading()),
+          buildHeight(10),
+          CategoriesGrid(
+            height: height,
+            width: width,
+          ),
+          buildHeight(30.0),
+          Text("Spotlight", style: buildHeading()),
+          const Expanded(child: ProductList()),
+          buildHeight(10.0),
         ],
       ),
-    );
+    ));
   }
-}
 
-class ProductList extends ConsumerWidget {
-  const ProductList({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context, ref) {
-    final _data = ref.watch(localProductList);
-    return _data.when(
-      data: (data) => ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          itemCount: data.length,
-          itemBuilder: (context, index) {
-            // debugPrint("----->${data.length}");
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(15))),
-                tileColor: Colors.deepPurple[600],
-                title: Text(data.elementAt(index).title),
-              ),
+  Row buildToggle() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        const SizedBox(
+          height: 25,
+          width: 25,
+          child: ImageIcon(
+            AssetImage("assets/logos/veg logo.png"),
+            color: Colors.green,
+          ),
+        ),
+        CupertinoSwitch(
+          value: _vegValue,
+          onChanged: (value) {
+            setState(
+              () {
+                _vegValue = value;
+              },
             );
-          }),
-      error: (error, stackTrace) {
-        return Center(
-          child: Text(error.toString()),
-        );
-      },
-      loading: () => const Center(
-        child: CircularProgressIndicator(),
-      ),
+          },
+        ),
+        buildWidth(10.0),
+        const SizedBox(
+          height: 25,
+          width: 25,
+          child: ImageIcon(
+            AssetImage("assets/logos/non-veg logo.png"),
+            color: Colors.red,
+          ),
+        ),
+        CupertinoSwitch(
+          value: _nonvegValue,
+          onChanged: (value) {
+            setState(
+              () {
+                _nonvegValue = value;
+              },
+            );
+          },
+        ),
+      ],
     );
   }
 }

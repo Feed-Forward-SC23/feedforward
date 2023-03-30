@@ -1,8 +1,7 @@
+import 'package:feedforward/pages/bottomNav.dart';
 import 'package:feedforward/pages/main_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-
 
 class EmailPassword {
   String email;
@@ -19,9 +18,9 @@ class EmailPassword {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      const snackBar =
-          SnackBar(content: Text("Successfully created a new user"));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      // const snackBar =
+      //     SnackBar(content: Text("Successfully created a new user"));
+      // ScaffoldMessenger.of(context).showSnackBar(snackBar);
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const MainPage()),
@@ -37,11 +36,15 @@ class EmailPassword {
     try {
       UserCredential cred = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      const snackBar = SnackBar(content: Text("Logged in as an existing user"));
-      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      // const snackBar = SnackBar(
+      //   content: Text("Logged in as an existing user"),
+      // );
+      // ScaffoldMessenger.of(context).showSnackBar(snackBar);
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => const MainPage()),
+          MaterialPageRoute(
+            builder: (context) => const BottomNavBar(),
+          ),
           (route) => false);
     } on FirebaseAuthException catch (e) {
       final snackBarE = SnackBar(content: Text(e.message.toString()));
