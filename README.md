@@ -4,7 +4,7 @@ Submission for Solution Challenge
 
 ### Team:
 
-* Sai Charan Kotichintala (C)
+* Saicharan Kotichintala (C)
 
 * Sakshi Ghugal
 
