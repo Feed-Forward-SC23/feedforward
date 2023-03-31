@@ -16,9 +16,9 @@ Submission for Solution Challenge
 You can checkout our video submission demo on youtube by clicking on the thumbnail below.
 
 ### This Project has been made targeting these UN Sustainable Goals:
-* ![ZERO HUNGER](https://user-images.githubusercontent.com/81572747/229167057-f077c55b-67ea-4a94-9249-5f3350c4ae6f.png)
-* ![RESPONSIBLE CONSUMPTION AND PRODUCTION](https://user-images.githubusercontent.com/81572747/229167008-23fd42c8-be4c-4127-ab07-012ec5829258.png)
-* ![CLIMATE ACTION](https://user-images.githubusercontent.com/81572747/229167092-cfb05909-6168-441d-8b5b-a650bf9c401e.png)
+![Zero Hunger](https://user-images.githubusercontent.com/81572747/229170382-95f8820b-5dfc-49f1-9dcc-369e392453bc.png)
+![Responsible Consumption and Production](https://user-images.githubusercontent.com/81572747/229170341-1af273c8-1ea8-49e2-b9d0-30442ec45d6f.png)
+![Climate Action](https://user-images.githubusercontent.com/81572747/229170445-011c5e95-7562-45fb-842c-864a96011045.png)
 
 
 ### Description:
