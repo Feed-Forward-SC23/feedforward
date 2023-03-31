@@ -20,8 +20,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  bool _vegValue = true;
-  bool _nonvegValue = true;
+  bool isVeg = true;
+  bool isNonVeg = true;
 
   @override
   Widget build(BuildContext context) {
@@ -29,45 +29,55 @@ class _MainPageState extends State<MainPage> {
     final width = MediaQuery.of(context).size.width;
 
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: ListView(
-          children: [
-            buildToggle(),
-            // buildHeight(30.0),
-            Text("Categories", style: buildHeading()),
-            buildHeight(10),
-            CategoriesGrid(
-              height: height,
-              width: width,
-            ),
-            buildHeight(30.0),
-            Row(
-              children: [
-                Text("Spotlight", style: buildHeading()),
-                const Spacer(),
-                InkWell(
-                  onTap: () => Navigator.pushNamed(context, '/allPro'),
-                  child: Text(
-                    "Show more >",
-                    style: GoogleFonts.poppins(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w500,
-                      color: cyan[0],
-                    ),
+        child: Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: ListView(
+        children: [
+          buildToggle(),
+          // buildHeight(30.0),
+          Text("Categories", style: buildHeading()),
+          buildHeight(10),
+          CategoriesGrid(
+            height: height,
+            width: width,
+          ),
+          buildHeight(30.0),
+          Row(
+            children: [
+              Text("Spotlight", style: buildHeading()),
+              const Spacer(),
+              InkWell(
+                onTap: () => Navigator.pushNamed(context, '/allPro'),
+                child: Text(
+                  "Show more >",
+                  style: GoogleFonts.poppins(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500,
+                    color: cyan[0],
                   ),
                 ),
-              ],
-            ),
-            Expanded(
-                child: NewProductList(
-              count: spotlightList.length - 8,
-            )),
-            buildHeight(10.0),
-          ],
-        ),
+              ),
+            ],
+          ),
+          isVeg
+              ? isNonVeg
+                  ? NewProductList(
+                      count: spotlightList.length - 13,
+                    )
+                  : const VegPro(
+                      count: 3,
+                    )
+              : isNonVeg
+                  ? const NonVegPro(
+                      count: 3,
+                    )
+                  : NewProductList(
+                      count: spotlightList.length - 13,
+                    ),
+          buildHeight(10.0),
+        ],
       ),
-    );
+    ));
   }
 
   Row buildToggle() {
@@ -83,11 +93,11 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
         CupertinoSwitch(
-          value: _vegValue,
+          value: isVeg,
           onChanged: (value) {
             setState(
               () {
-                _vegValue = value;
+                isVeg = value;
               },
             );
           },
@@ -102,11 +112,11 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
         CupertinoSwitch(
-          value: _nonvegValue,
+          value: isNonVeg,
           onChanged: (value) {
             setState(
               () {
-                _nonvegValue = value;
+                isNonVeg = value;
               },
             );
           },
@@ -116,13 +126,49 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-
 // ------------ Floating action button ------------------
 
-        // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {
-        //     debugPrint("The Floating Button was Pressed");
-        //   },
-        //   child: const Icon(Icons.add_rounded),
-        // ),
+// floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+// floatingActionButton: FloatingActionButton(
+//   onPressed: () {
+//     debugPrint("The Floating Button was Pressed");
+//   },
+//   child: const Icon(Icons.add_rounded),
+// ),
+
+// ListView(
+//   children: [
+//     buildToggle(),
+//     // buildHeight(30.0),
+//     Text("Categories", style: buildHeading()),
+//     buildHeight(10),
+//     CategoriesGrid(
+//       height: height,
+//       width: width,
+//     ),
+//     buildHeight(30.0),
+//     Row(
+//       children: [
+//         Text("Spotlight", style: buildHeading()),
+//         const Spacer(),
+//         InkWell(
+//           onTap: () => Navigator.pushNamed(context, '/allPro'),
+//           child: Text(
+//             "Show more >",
+//             style: GoogleFonts.poppins(
+//               fontSize: 10,
+//               fontWeight: FontWeight.w500,
+//               color: cyan[0],
+//             ),
+//           ),
+//         ),
+//       ],
+//     ),
+//     NewProductList(
+//       count: spotlightList.length - 11,
+//       scroll: true,
+//       vertical: true,
+//     ),
+//     buildHeight(10.0),
+//   ],
+// ),

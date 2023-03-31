@@ -13,23 +13,31 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
+        prefixIcon: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.arrow_back_ios_new_rounded),
+        ),
         floatingLabelBehavior: FloatingLabelBehavior.never,
         hintText: 'Find your cravings',
-        hintStyle: buildBody(),
+        hintStyle: GoogleFonts.poppins(
+          fontSize: 15,
+          fontWeight: FontWeight.w400,
+          color: black[2],
+        ),
         label: Row(
           children: [
-            SizedBox(
-              height: 20,
-              width: 20,
-              child: ImageIcon(
-                const AssetImage('assets/logos/search 1.png'),
-                color: black[1],
-              ),
-            ),
+            buildWidth(10.0),
             Text(
               "Search your cravings...",
               style: GoogleFonts.poppins(fontSize: 12, color: black[1]),
-            )
+            ),
+            const Spacer(),
+            const Icon(
+              Icons.search,
+              size: 20,
+            ),
           ],
         ),
         border: OutlineInputBorder(

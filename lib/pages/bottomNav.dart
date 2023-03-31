@@ -1,5 +1,5 @@
 import 'package:feedforward/pages/appbar1.dart';
-import 'package:feedforward/pages/free_paid.dart';
+import 'package:feedforward/customWidgets.dart/free_paid.dart';
 import 'package:feedforward/pages/main_page.dart';
 import 'package:feedforward/pages/profile.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +33,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       body: NestedScrollView(
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          const SilverAppBar(),
+          const SilverAppBar1(),
         ],
         body: screens[count],
       ),

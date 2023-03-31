@@ -1,5 +1,6 @@
 import 'package:feedforward/pages/allProducts.dart';
 import 'package:feedforward/pages/main_page.dart';
+import 'package:feedforward/pages/searchPage.dart';
 import 'package:feedforward/services/auth/email_ui.dart';
 import 'package:feedforward/services/auth/firebase_options.dart';
 import 'package:feedforward/services/auth/login_ui.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         '/email': (context) => const EmailSignIn(),
         '/mainpage': (context) => const MainPage(),
         '/allPro': (context) => const AllProducts(),
+        '/search': (context) => const SearchPage(),
       },
       // home: const BottomNavBar(),
     );
