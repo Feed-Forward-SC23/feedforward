@@ -63,7 +63,6 @@ class ItemCard extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                           fontSize: 18,
                         ),
-                        // overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     buildWidth(5.0),

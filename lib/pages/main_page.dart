@@ -30,7 +30,7 @@ class _MainPageState extends State<MainPage> {
 
     return SafeArea(
         child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
       child: ListView(
         children: [
           buildToggle(),

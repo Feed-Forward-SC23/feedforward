@@ -5,10 +5,12 @@ class CategoriesModel {
 }
 
 List categories = [
-  CategoriesModel(name: "Packed Snacks", path: "assets/packed.png"),
-  CategoriesModel(name: "Freshly Cooked", path: "assets/freshly.png"),
-  CategoriesModel(name: "Beverage", path: "assets/beverage.png"),
-  CategoriesModel(name: "Frozen Food", path: "assets/frozen.png"),
+  // CategoriesModel(name: "Packed Snacks", path: "assets/packed.png"),
+  // CategoriesModel(name: "Freshly Cooked", path: "assets/freshly.png"),
+  CategoriesModel(name: "Home Food", path: 'assets/home.png'),
+  CategoriesModel(name: "caterer", path: 'assets/cater.png'),
   CategoriesModel(name: "Bakery Food", path: "assets/bakery.png"),
-  CategoriesModel(name: "Raw Food", path: "assets/raw.png"),
+  // CategoriesModel(name: "Beverage", path: "assets/beverage.png"),
+  // CategoriesModel(name: "Frozen Food", path: "assets/frozen.png"),
+  // CategoriesModel(name: "Raw Food", path: "assets/raw.png"),
 ];

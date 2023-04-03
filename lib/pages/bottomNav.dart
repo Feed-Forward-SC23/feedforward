@@ -54,29 +54,49 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_rounded,
-                color: black[2],
-              ),
-              label: "Free"),
+            icon: Icon(
+              Icons.money_off_csred_rounded,
+              color: black[2],
+            ),
+            label: "Free",
+            activeIcon: Icon(
+              Icons.money_off_csred_rounded,
+              color: yellow[1],
+            ),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.add,
-                color: black[2],
-              ),
-              label: "add"),
+            icon: Icon(
+              Icons.add,
+              color: black[2],
+            ),
+            label: "Add",
+            activeIcon: Icon(
+              Icons.add,
+              color: yellow[1],
+            ),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_rounded,
-                color: black[2],
-              ),
-              label: "Paid"),
+            icon: Icon(
+              Icons.monetization_on,
+              color: black[2],
+            ),
+            label: "Paid",
+            activeIcon: Icon(
+              Icons.monetization_on,
+              color: yellow[1],
+            ),
+          ),
           BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person_rounded,
-                color: black[2],
-              ),
-              label: "Profile"),
+            icon: Icon(
+              Icons.person,
+              color: black[2],
+            ),
+            label: "Profile",
+            activeIcon: Icon(
+              Icons.person,
+              color: yellow[1],
+            ),
+          ),
         ],
       ),
     );

@@ -12,7 +12,7 @@ class CategoriesGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: ((width - 60) * 2 / 3) + 10,
+      height: ((width - 60) / 3),
       child: GridView.builder(
           itemCount: categories.length,
           physics: const NeverScrollableScrollPhysics(),
