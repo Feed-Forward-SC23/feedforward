@@ -23,3 +23,8 @@ TextStyle buildAddress() => GoogleFonts.poppins(
       fontSize: 12,
       color: black[4],
     );
+TextStyle buildAddItem() => GoogleFonts.poppins(
+      fontSize: 12,
+      color: const Color(0x30000000),
+    );
+TextStyle buildTag() => GoogleFonts.poppins(fontSize: 12, color: black[4]);

@@ -190,3 +190,21 @@ class SilverAppBar2 extends StatelessWidget {
         ));
   }
 }
+
+// class SilverAppBar3 extends StatelessWidget {
+//   const SilverAppBar3({
+//     // required this.heading,
+//     super.key,
+//   });
+//   // String heading;
+//   @override
+//   Widget build(BuildContext context) {
+//     final width = MediaQuery.of(context).size.width;
+//     return AppBar(
+//       title: Text(
+//         "heading",
+//         style: buildHeading(),
+//       ),
+//     );
+//   }
+// }

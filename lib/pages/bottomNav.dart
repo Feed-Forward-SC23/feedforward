@@ -1,3 +1,4 @@
+import 'package:feedforward/pages/addItem.dart';
 import 'package:feedforward/pages/appbar1.dart';
 import 'package:feedforward/customWidgets.dart/free_paid.dart';
 import 'package:feedforward/pages/main_page.dart';
@@ -21,9 +22,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List screens = [
     const MainPage(),
     const FreePro(),
-    const Center(
-      child: Text("Form to list down your product"),
-    ),
+    const AddItem(),
     const PaidPage(),
     const Profile(),
   ];
