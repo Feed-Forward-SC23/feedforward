@@ -1,6 +1,8 @@
 # FeedForward
 
 Submission for Solution Challenge
+<img src="https://user-images.githubusercontent.com/81572747/229888129-7802fb2a-3585-4218-acb9-9f19a84c72fe.png" width="1000" height="500">
+
 
 ### Team:
 
