@@ -26,10 +26,10 @@ FeedForward Video Submission for Google Solution Challenge 2023 [FeedForward - G
 * To show realtime location and events near the user's location we are using Google Maps API from GCP.
 
 ### Setup:
-<img src="https://o.remove.bg/downloads/3c093016-5ed0-40c4-9180-da4e860cff2a/image-removebg-preview.png" width="300" height="300" />
-<img src="https://o.remove.bg/downloads/df29f3c3-58b1-49a8-a218-0b0c749dbd60/image-removebg-preview.png" width="300" height="300" />
-<img src="https://o.remove.bg/downloads/d8258083-47d8-4695-9bb2-92380c7bdd92/image-removebg-preview.png" width="300" height="300" />
-<img src="https://o.remove.bg/downloads/f4380eeb-f30e-43d8-b757-f23bd59cd974/image-removebg-preview.png" width="300" height="300" />
+<img src="https://o.remove.bg/downloads/3c093016-5ed0-40c4-9180-da4e860cff2a/image-removebg-preview.png" />
+<img src="https://o.remove.bg/downloads/df29f3c3-58b1-49a8-a218-0b0c749dbd60/image-removebg-preview.png"  />
+<img src="https://o.remove.bg/downloads/d8258083-47d8-4695-9bb2-92380c7bdd92/image-removebg-preview.png"  />
+<img src="https://o.remove.bg/downloads/f4380eeb-f30e-43d8-b757-f23bd59cd974/image-removebg-preview.png" />
 
 ### Team:
 ![feed forward team](https://user-images.githubusercontent.com/81346526/229980882-4b78ae08-d64b-4960-a617-56bf05b268a1.png)
